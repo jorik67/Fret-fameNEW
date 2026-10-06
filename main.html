@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character HUD Interface</title>
+    <link rel="stylesheet" href="../static/css/main.css">
+</head> 
+<body>
+
+    <header class="hud-header">
+        <!-- 1. Место для картинки (аватарки) -->
+        <div class="hud-block avatar-block">
+            <img src="{{avatar.link}}" alt="Аватарка">
+        </div>
+
+        <!-- 2. Имя и Возраст -->
+        <div class="hud-block info-block">
+            <div class="NameDiv">{{player.name}}</div>
+            <div class="AgeDiv">{{player.age}}</div>
+        </div>
+
+        <!-- 3. Основные полоски потребностей -->
+        <div class="hud-block stats-text-block">
+            <div class="stats">
+                <div class="stat-row hp">
+                    <div class="bar"><div id="hp-fill" class="fill"></div></div>
+                    <span>{{player.hp}}HP/{{player.max_hp}}HP</span>
+                </div>
+                <div class="stat-row energy">
+                    <div class="bar"><div id="energy-fill" class="fill"></div></div>
+                    <span>{{player.energy}}/{{player.max_energy}} ENERGY</span>
+                </div>
+                <div class="stat-row hydration">
+                    <div class="bar"><div id="water-fill" class="fill"></div></div>
+                    <span>{{player.hydration}}/{{player.max_hydration}} WATER</span>
+                </div>
+                <div class="stat-row satiety">
+                    <div class="bar"><div id="food-fill" class="fill"></div></div>
+                    <span>{{player.satiety}}/{{player.max_satiety}} FOOD</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Центральный блок с полосками опыта и стат -->
+        <div class="hud-block main-bars-block">
+
+            <div class="XP-NextLvl">
+                <div class="xp-bar">
+                    <div id="xp-fill" class="AvailableEx"></div>
+                    <div class="xp-text">
+                        <span id="current-xp">{{player.xp}}</span> / <span id="max-xp">5000</span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- 5. Время и деньги -->
+        <div class="hud-block finance-block">
+            <div class="TimeDiv">
+        <span class="HourDiv">{{hours}}</span>:<span class="MinuteDiv">{{minutes}}</span>
+            </div>
+            <div class="money-label">{{player.money}}</div>
+        </div>
+
+        <div class="map-block">
+            <div class="map-placeholder">
+                <a href="/map">
+                <img src="../static/img/background-map.jpg" alt="карта">
+                </a>
+            </div>
+        </div>
+
+        <div class="inventory-block" id="inventory-trigger">
+    <div class="inventory-placeholder">
+        <img src="../static/img/inventory-icon.jpg" alt="инвентарь">
+    </div>
+</div>
+
+<!-- Скрытое окно инвентаря с предметами -->
+<div class="inventory-popup hidden" id="inventory-window">
+    <div class="inventory-popup-header">
+        <span>Рюкзак</span>
+        <button class="close-inventory-btn" id="inventory-close">×</button>
+    </div>
+    
+    <!-- Сетка для предметов -->
+    <div class="inventory-grid">
+        <!-- Пример ячейки с предметом -->
+        <div class="inventory-slot">
+            <img src="../static/img/items/water.png" alt="Вода">
+            <span class="slot-count">x2</span>
+        </div>
+        <!-- Пустые ячейки для вида -->
+        <div class="inventory-slot"></div>
+        <div class="inventory-slot"></div>
+        <div class="inventory-slot"></div>
+        <div class="inventory-slot"></div>
+        <div class="inventory-slot"></div>
+        <div class="inventory-slot"></div>
+        <div class="inventory-slot"></div>
+    </div>
+</div>
+        
+
+        
+    </header>
+
+    <!-- Основная пустая область страницы под шапкой -->
+    <main class="main-content" >
+        <div class="trailer-door">
+            <a href="/inside_trailer">
+                <img src="/static/img/location-items/trailer-day-door.png" id="click">
+            </a>
+        </div>
+        <!-- Блок для карты в правом нижнем углу -->
+    </main>
+
+<script src="../static/js/script.js"></script>
+</body>
+</html>
